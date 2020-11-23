@@ -10,8 +10,20 @@
   </head>
 
   <body>
+    <% if user_signed_in? %> 
+    <%= link_to "ホーム", root_path%>
+    <%= link_to "ログアウト", destroy_user_session_path, :method=>'delete'%>
+<% else %>
+    <%= link_to "ホーム", root_path%>
+    <%= link_to "サインイン", new_user_session_path %>
+    <%= link_to 'ユーザ登録', new_user_registration_path %>
+<% end %>
+<br>
+<hr>
+<br>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    
     <%= yield %>
   </body>
 </html>
